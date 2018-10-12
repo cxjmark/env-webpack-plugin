@@ -5,24 +5,25 @@ const endOfLine = require('os').EOL
  * @method 根据执行命令写入不同的域名
  * @param {Object} options
  */
-class EnvWebpackPlugin {
-  constructor (options = {}) {
-    this.options = options
-  }
-  apply (compiler) {
-    compiler.hooks.done.tap('EnvWebpackPlugin', () => {
-      if (process.env.NODE_ENV) {
-        let input = require(this.options.form)
-        const content = jsBeauty.js(
-          JSON.stringify(input[process.env.NODE_ENV]), {
-            indent_size: 2
-          })
-        /**
-           * eslint quotes: ["error", "double"] 写入的时候是双引号 避免eslint 出现警告或报错
-           */
-        fs.writeFileSync(this.options.to, `/* eslint quotes: ["error", "double"] */${endOfLine}/*eslint-env es6*/${endOfLine}export default ${content + endOfLine}`)
-      }
-    })
-  }
+function EnvWebpackPlugin(options) {
+  // Setup the plugin instance with options...
+  this.options = options
 }
+
+EnvWebpackPlugin.prototype.apply = function(compiler) {
+  const self = this
+  compiler.plugin('compilation', function() {
+    if (self.options.pattern) {
+      let input = require(self.options.from)
+      const content = jsBeauty.js(
+        JSON.stringify(input[self.options.pattern]), {
+          indent_size: 2
+        })
+      /**
+         * eslint quotes: ["error", "double"] 写入的时候是双引号 避免eslint 出现警告或报错
+         */
+      fs.writeFileSync(self.options.to, `/* eslint quotes: ["error", "double"] */${endOfLine}/*eslint-env es6*/${endOfLine}export default ${content + endOfLine}`)
+    }
+  });
+};
 module.exports = EnvWebpackPlugin
