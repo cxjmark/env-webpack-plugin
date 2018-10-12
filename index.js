@@ -22,7 +22,7 @@ EnvWebpackPlugin.prototype.apply = function(compiler) {
       /**
          * eslint quotes: ["error", "double"] 写入的时候是双引号 避免eslint 出现警告或报错
          */
-      fs.writeFileSync(self.options.to, `/* eslint quotes: ["error", "double"] */${endOfLine}/*eslint-env es6*/${endOfLine}export default ${content + endOfLine}`)
+      fs.writeFileSync(self.options.to, `/* eslint quotes: ["error", "double"] */${endOfLine}export default ${content + endOfLine}`)
     }
   });
 };

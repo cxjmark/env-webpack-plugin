@@ -1,6 +1,6 @@
 {
   "name": "env-webpack-plugin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "web项目环境配置",
   "main": "index.js",
   "scripts": {
