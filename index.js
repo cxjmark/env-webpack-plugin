@@ -5,12 +5,12 @@ const endOfLine = require('os').EOL
  * @method 根据执行命令写入不同的域名
  * @param {Object} options
  */
-class HttpEnvWebpackPlugin {
+class EnvWebpackPlugin {
   constructor (options = {}) {
     this.options = options
   }
   apply (compiler) {
-    compiler.hooks.done.tap('HttpEnvWebpackPlugin', () => {
+    compiler.hooks.done.tap('EnvWebpackPlugin', () => {
       if (process.env.NODE_ENV) {
         let input = require(this.options.form)
         const content = jsBeauty.js(
@@ -25,4 +25,4 @@ class HttpEnvWebpackPlugin {
     })
   }
 }
-module.exports = HttpEnvWebpackPlugin
+module.exports = EnvWebpackPlugin

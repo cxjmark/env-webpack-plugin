@@ -1,7 +1,7 @@
 {
-  "name": "http-env-webpack-plugin",
-  "version": "1.0.0",
-  "description": "",
+  "name": "env-webpack-plugin",
+  "version": "1.0.2",
+  "description": "web项目环境配置",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
     "webpack",
     "node"
   ],
-  "author": "Mark",
+  "author": "cxjmark",
   "license": "ISC",
   "devDependencies": {
     "js-beautify": "^1.8.4"

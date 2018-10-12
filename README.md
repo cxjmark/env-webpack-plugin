@@ -1,1 +1,1 @@
-# http-env-webpack-plugin
+# env-webpack-plugin
